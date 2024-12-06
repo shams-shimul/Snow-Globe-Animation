@@ -1,15 +1,18 @@
-# SNOW GLOBE ANIMATION ❄
+# Snow Globe Animation
 
 **JavaScriptomas 2024 challenge from [Scrimba](https://scrimba.com/), Day 6**
 
-As the name suggests, this challenge is all about creating a beautiful snowflake animation inside a snow globe using JavaScript. A couple of background images have been used to create the snow globe model with that Christmas vibe!
+As the name suggests, this challenge is all about creating a beautiful snowflake ❄ animation inside a snow globe 🔮 using JavaScript. A couple of background images have been used to create the snow globe model with that Christmas vibe!
+
+![snow-globe-snowflake-animation-javascript](https://github.com/user-attachments/assets/4b969088-9aeb-4f21-9a6b-5a45c976b8a7)
+
 
 ### Branches:
 
 - **`main`**: Includes the initial challenge files
 - **`solution`**: Includes all the changes added to complete the challenge goals. PR won't be created to **`main`**.
 
-&nbsp;
+<br>
 
 # Getting Started
 Install the dependencies and run the project
