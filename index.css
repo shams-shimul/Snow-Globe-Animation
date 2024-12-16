@@ -1,41 +1,46 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #2b2d42;
-  background-image: url('images/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #2b2d42;
+	background-image: url("images/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .snow-globe {
-  position: relative;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  border-bottom-left-radius: unset;
-  border-bottom-right-radius: unset;
-  overflow: hidden;
-  background-image: url('images/scene.png');
-  background-color: black;
-  background-size: contain;
-  box-shadow: inset 25px 25px 40px rgba(255,255,255,.5);
-  border: 2px solid #999;
+	position: relative;
+	width: 380px;
+	height: 380px;
+	border-radius: 50%;
+	border-bottom-left-radius: unset;
+	border-bottom-right-radius: unset;
+	overflow: hidden;
+	background-color: black;
+	background-image: url("images/scene.png");
+	background-size: contain;
+	box-shadow: inset 25px 25px 40px rgba(255, 255, 255, 0.5);
+	border: 2px solid #999;
+	z-index: 1;
 }
 
 .snow-globe-base {
-  width: 380px;
-  height: 60px;
-  background: rgb(157,161,159);
-  background: linear-gradient(90deg, rgba(157,161,159,1) 27%, rgba(247,254,251,1) 69%);
+	width: 380px;
+	height: 60px;
+	background: rgb(157, 161, 159);
+	background: linear-gradient(
+		90deg,
+		rgba(157, 161, 159, 1) 27%,
+		rgba(247, 254, 251, 1) 69%
+	);
 }
 
 /* 
@@ -44,16 +49,189 @@ Challenge:
 */
 
 .snowflake {
-  position: absolute;
-  top: -10px;
-  user-select: none;
-  pointer-events: none;
-  animation: fall linear infinite;
-  z-index: 4;
+	position: absolute;
+	top: -20px;
+	user-select: none;
+	pointer-events: none;
+	animation: fall linear infinite;
+	z-index: 4;
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(100vh);
-  }
+	to {
+		transform: translate(200px, 100vh);
+	}
+}
+
+.shake {
+	animation: shake 0.5s 2;
+}
+
+button {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	padding: 10px 22px;
+	border-radius: 6px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-transform: uppercase;
+	font-weight: bold;
+	z-index: 1;
+	background-color: #999;
+}
+
+button span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: indianred;
+	border-radius: 6px;
+	z-index: -1;
+}
+
+button:disabled {
+	cursor: default;
+}
+
+button:disabled span {
+	width: 0%;
+}
+
+button span.regain {
+	transition: all 20s linear;
+	width: 100%;
+}
+
+button:not(:disabled):active {
+	transform: scale(0.9);
+}
+
+button:not(:disabled):before,
+button:not(:disabled):after {
+	position: absolute;
+	content: "";
+	width: 150%;
+	left: 50%;
+	height: 100%;
+	transform: translateX(-50%);
+	z-index: -1000;
+	background-repeat: no-repeat;
+}
+
+button:not(:disabled):hover:before {
+	top: -70%;
+	background-image: radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, transparent 20%, tomato 20%, transparent 30%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, transparent 10%, tomato 15%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%);
+	background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+		10% 10%, 18% 18%;
+	background-position: 50% 120%;
+	animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+	0% {
+		background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+			40% 90%, 55% 90%, 70% 90%;
+	}
+
+	50% {
+		background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+			50% 50%, 65% 20%, 90% 30%;
+	}
+
+	100% {
+		background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+			50% 40%, 65% 10%, 90% 20%;
+		background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+}
+
+button:not(:disabled):hover::after {
+	bottom: -70%;
+	background-image: radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, transparent 10%, tomato 15%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%),
+		radial-gradient(circle, tomato 20%, transparent 20%);
+	background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+	background-position: 50% 0%;
+	animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+	0% {
+		background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+			70% -10%, 70% 0%;
+	}
+
+	50% {
+		background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+			105% 0%;
+	}
+
+	100% {
+		background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+			110% 10%;
+		background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+}
+
+@keyframes shake {
+	0% {
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+
+	10% {
+		transform: translate(-1px, -2px) rotate(-1deg);
+	}
+
+	20% {
+		transform: translate(-3px, 0px) rotate(1deg);
+	}
+
+	30% {
+		transform: translate(3px, 2px) rotate(0deg);
+	}
+
+	40% {
+		transform: translate(1px, -1px) rotate(1deg);
+	}
+
+	50% {
+		transform: translate(-1px, 2px) rotate(-1deg);
+	}
+
+	60% {
+		transform: translate(-3px, 1px) rotate(0deg);
+	}
+
+	70% {
+		transform: translate(3px, 1px) rotate(-1deg);
+	}
+
+	80% {
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+
+	90% {
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(1px, -2px) rotate(-1deg);
+	}
 }
