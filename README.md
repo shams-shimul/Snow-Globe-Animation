@@ -9,8 +9,8 @@ As the name suggests, this challenge is all about creating a beautiful snowflake
 
 ### Branches:
 
-- **`main`**: Includes the initial challenge files
-- **`solution`**: Includes all the changes added to complete the challenge goals. PR won't be created to **`main`**.
+- **`main`**: Includes files from the challenge completion state.
+- **`challenge`**: Includes files from the initial state of the challenge.
 
 <br>
 
